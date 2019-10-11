@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { Redirect } from 'react-router-dom'
 import BookForm from './BookForm'
 
 const CreateBook = ({ user }) => {
+  const bookObject = {
+    title: '',
+    author: ''
+  }
   const [created, setCreated] = useState(false)
-  const [book, setBook] = useState(null)
+  const [book, setBook] = useState(bookObject)
 
   const handleChange = event => {
     event.persist()
@@ -15,11 +19,12 @@ const CreateBook = ({ user }) => {
 
   const handleSubmit = event => {
     event.preventDefault()
+
     axios({
-      url: `${apiUrl}/books`,
       method: 'POST',
+      url: `${apiUrl}/books`,
       headers: {
-        Authorization: `Token token=${user.token}`
+        'Authorization': `Token token=${user.token}`
       },
       data: { book }
     })
@@ -32,14 +37,12 @@ const CreateBook = ({ user }) => {
   }
 
   return (
-    <React.Fragment>
-      <BookForm
-        book={book}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        cancelPath="/"
-      />
-    </React.Fragment>
+    <BookForm
+      book={book}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      cancelPath='/'
+    />
   )
 }
 

@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
+    <Nav.Link href="#create-book">Create a Book</Nav.Link>
+    <Nav.Link href="#books">Books</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
@@ -23,7 +25,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="dark" variant="dark" expand="md">
+  <Navbar bg="dark" variant="dark sticky-top" collapseOnSelect expand="md">
     <Navbar.Brand href="#">
       Boba Tracker
     </Navbar.Brand>
