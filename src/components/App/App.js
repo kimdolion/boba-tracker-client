@@ -3,11 +3,23 @@ import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
-import Header from '../Header/Header'
+import Header from '../Header'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Orders from '../Orders/Orders'
+import Order from '../Orders/Order'
+import CreateOrder from '../Orders/CreateOrder'
+import EditOrder from '../Orders/EditOrder'
+
+const styles = {
+  main: {
+    backgroundColor: 'transparent',
+    fontWeight: 'bold',
+    color: '#000000'
+  }
+}
 
 class App extends Component {
   constructor () {
@@ -41,7 +53,7 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <main className="container">
+        <main className="container" style={ styles.main }>
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -53,6 +65,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/orders' render={() => (
+            <Orders alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/orders/:id' render={() => (
+            <Order alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/create-order' render={() => (
+            <CreateOrder alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/orders/:id/edit-order' render={() => (
+            <EditOrder alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>
