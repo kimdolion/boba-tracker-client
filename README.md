@@ -1,6 +1,11 @@
 # Boba Tracker
 Keep track of your bubble tea purchases so you can remember what you liked and calculate what you've spent.
 
+[Front-end Client](https://kimdolion.github.io/boba-tracker-client/#/)
+[Front-end Repo](https://github.com/kimdolion/boba-tracker-client)
+[Back-end Client](https://limitless-everglades-63033.herokuapp.com/)
+[Back-end Repo](https://github.com/kimdolion/boba-tracker-backend)
+
 ## Technologies Used
 HTML, CSS, JavaScript, Boostrap, AJAX, React
 
