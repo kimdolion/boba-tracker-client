@@ -1,1 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
+$light-tea: #dbc3ab;
+$dark-tea: #c49c73;
+
+html {
+  background: linear-gradient(to bottom, $light-tea 20%, $dark-tea 80%) no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, $light-tea 20%, $dark-tea 80%) no-repeat;
+  height: 100%;
+  width: 100%;
+}
