@@ -5,6 +5,7 @@ import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../General/Header'
 import Footer from '../General/Footer'
+import Home from '../General/Home'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
@@ -55,6 +56,9 @@ class App extends Component {
           />
         ))}
         <main className="container" style={ styles.main }>
+          <Route exact path='/home' user={user} render={() => (
+            <Home alert={this.alert} setUser={this.setUser} user={user} />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
