@@ -17,9 +17,7 @@ import EditOrder from '../Orders/EditOrder'
 
 const styles = {
   main: {
-    backgroundColor: 'transparent',
-    fontWeight: 'bold',
-    color: '#000000'
+    fontSize: '1.25rem'
   }
 }
 
