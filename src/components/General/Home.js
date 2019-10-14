@@ -1,4 +1,5 @@
 import React from 'react'
+import MyModal from './Modal'
 
 const authenticatedOptions = (
   <React.Fragment>
@@ -16,6 +17,10 @@ const unauthenticatedOptions = (
   </React.Fragment>
 )
 
+const alwaysOptions = (
+  <MyModal />
+)
+
 const Home = ({ user }) => (
   <React.Fragment>
     <h1>Welcome to Boba Tracker!</h1>
@@ -23,6 +28,7 @@ const Home = ({ user }) => (
     </p>
     <p>You can also see what other people have ordered and try their boba order for yourself. If you do make sure to like that order by tapping the heart next to it!
     </p>
+    { alwaysOptions }
     { user ? authenticatedOptions : unauthenticatedOptions }
   </React.Fragment>
 )

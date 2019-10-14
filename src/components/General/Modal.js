@@ -28,8 +28,7 @@ function MyVerticallyCenteredModal (props) {
     </Modal>
   )
 }
-
-function App () {
+function MyModal () {
   const [modalShow, setModalShow] = React.useState(false)
 
   return (
@@ -46,4 +45,4 @@ function App () {
   )
 }
 
-render(<App />)
+export default MyModal
