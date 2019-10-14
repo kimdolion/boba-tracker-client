@@ -15,7 +15,7 @@ const styles = {
   }
 }
 
-const Order = ({ user, alerts, match }) => {
+const Order = ({ user, alert, match }) => {
   const [order, setOrder] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
@@ -27,7 +27,21 @@ const Order = ({ user, alerts, match }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-      .then(responseData => setOrder(responseData.data.order))
+      .then(responseData => {
+        let formattedDate = ''
+        if (responseData.data.order.datePurchased) {
+          const options = {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          }
+          const dateObj = new Date(responseData.data.order.datePurchased)
+          const offsetDate = new Date(dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset()))
+          formattedDate = offsetDate.toLocaleDateString(undefined, options)
+        }
+        setOrder({ ...responseData.data.order, datePurchased: formattedDate
+        })
+      })
       .catch(console.error)
   }, [])
   const destroy = () => {
@@ -66,7 +80,7 @@ const Order = ({ user, alerts, match }) => {
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
       <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
-      <Button onClick={destroy} href={'#/orders/'} className='btn btn-danger m-2'>Delete</Button>
+      <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
       <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
     </div>
   )

@@ -11,7 +11,7 @@ const styles = {
   }
 }
 
-const Orders = ({ user, alerts }) => {
+const Orders = ({ user, alert }) => {
   const [orders, setOrders] = useState([])
   useEffect(() => {
     axios({

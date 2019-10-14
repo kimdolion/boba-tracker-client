@@ -15,7 +15,6 @@ const EditOrder = ({ user, match, alert, history }) => {
     cost: ''
   })
   const [updated, setUpdated] = useState(false)
-
   useEffect(() => {
     axios({
       method: 'GET',
@@ -24,7 +23,21 @@ const EditOrder = ({ user, match, alert, history }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-      .then(responseData => setOrder(responseData.data.order))
+      .then(responseData => {
+        let formattedDate = ''
+        if (responseData.data.order.datePurchased) {
+          const options = {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          }
+          const dateObj = new Date(responseData.data.order.datePurchased)
+          const offsetDate = new Date(dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset()))
+          formattedDate = offsetDate.toLocaleDateString(undefined, options)
+        }
+        setOrder({ ...responseData.data.order, datePurchased: formattedDate
+        })
+      })
       .catch(console.error)
   }, [])
 
@@ -32,7 +45,6 @@ const EditOrder = ({ user, match, alert, history }) => {
     event.persist()
     setOrder(order => ({ ...order, [event.target.name]: event.target.value }))
   }
-
   const handleSubmit = event => {
     event.preventDefault()
     axios({
