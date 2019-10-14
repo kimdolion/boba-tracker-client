@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { Row, Col } from 'react-bootstrap'
 
 const styles = {
   orders: {
-    marginBottom: '2rem',
-    padding: '2px 5px'
+    backgroundColor: 'transparent',
+    margin: '2rem'
   }
 }
 
@@ -25,15 +26,15 @@ const Orders = ({ user, alerts }) => {
   }, [])
 
   const ordersJsx = orders.map(order => (
-    <div key={order._id} style={styles.orders}>
-      <Link to={`/orders/${order._id}`} className='btn btn-info'>Title: {order.title}</Link>
-    </div>
+    <Col sm='6' md='3' lg='2' xl='1' key={order._id} style={styles.orders}>
+      <Link to={`/orders/${order._id}`}>Title: {order.title} Location: {order.location}</Link>
+    </Col>
   ))
 
   return (
     <React.Fragment>
       <h1>Orders</h1>
-      <ul style={{ listStyleType: 'none' }}>{ordersJsx} </ul>
+      <Row>{ordersJsx}</Row>
     </React.Fragment>
   )
 }

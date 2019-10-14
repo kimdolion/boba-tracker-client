@@ -5,7 +5,14 @@ import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 
 const EditOrder = ({ user, match, alert, history }) => {
-  const [order, setOrder] = useState({ title: '', author: '' })
+  const [order, setOrder] = useState({
+    title: '',
+    flavor: '',
+    toppings: '',
+    datePurchased: '',
+    location: '',
+    cost: ''
+  })
 
   useEffect(() => {
     axios({

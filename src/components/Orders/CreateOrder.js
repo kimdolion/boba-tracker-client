@@ -7,7 +7,11 @@ import OrderForm from './OrderForm'
 const CreateOrder = ({ user }) => {
   const orderObject = {
     title: '',
-    author: ''
+    flavor: '',
+    toppings: '[]',
+    datePurchased: '',
+    location: '',
+    cost: ''
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)
@@ -24,7 +28,7 @@ const CreateOrder = ({ user }) => {
       method: 'POST',
       url: `${apiUrl}/orders`,
       headers: {
-        'Authorization': `Token token=${user.token}`
+        'Authorization': `Bearer ${user.token}`
       },
       data: { order }
     })

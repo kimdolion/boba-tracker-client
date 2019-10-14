@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
@@ -16,6 +16,8 @@ const styles = {
 
 const Order = ({ user, alerts, match }) => {
   const [order, setOrder] = useState(null)
+  const [deleted, setDeleted] = useState(false)
+
   useEffect(() => {
     axios({
       method: 'GET',
@@ -27,9 +29,26 @@ const Order = ({ user, alerts, match }) => {
       .then(responseData => setOrder(responseData.data.order))
       .catch(console.error)
   }, [])
+  const destroy = () => {
+    axios({
+      method: 'DELETE',
+      url: `${apiUrl}/orders/${match.params.id}`,
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+      .then(() => setDeleted(true))
+      .catch(console.error)
+  }
 
   if (!order) {
     return <p>...Loading</p>
+  }
+
+  if (deleted) {
+    return <Redirect to={
+      { pathname: '/', state: { message: 'Order succesfully deleted!' } }
+    } />
   }
   return (
     <div style={ styles.order }>
@@ -39,6 +58,7 @@ const Order = ({ user, alerts, match }) => {
       <li key={order.location}>Location: {order.location}</li>
       <li key={order.cost}>Cost: {order.cost}</li>
       <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
+      <Button onClick={destroy} href={'#/orders/'} className='btn btn-danger m-2'>Delete</Button>
       <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
     </div>
   )
