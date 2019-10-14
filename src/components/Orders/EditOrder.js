@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
+import messages from '../AutoDismissAlert/messages'
 
 const EditOrder = ({ user, match, alert, history }) => {
   const [order, setOrder] = useState({
@@ -13,6 +14,7 @@ const EditOrder = ({ user, match, alert, history }) => {
     location: '',
     cost: ''
   })
+  const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
     axios({
@@ -41,9 +43,13 @@ const EditOrder = ({ user, match, alert, history }) => {
       },
       data: { order }
     })
-      .then(() => alert({ heading: 'Success', message: 'You updated a order', variant: 'success' }))
-      .then(() => history.push(`/orders/${match.params.id}`))
-      .catch(() => alert({ heading: 'Danger', message: 'Something went wrong!', variant: 'danger' }))
+      .then(() => setUpdated(true))
+      .then(() => alert({ heading: 'Success', message: messages.updateSuccess, variant: 'success' }))
+      .catch(() => alert({ heading: 'Danger', message: messages.failure, variant: 'danger' }))
+      .catch(console.error)
+  }
+  if (updated) {
+    return <Redirect to={`/orders/${match.params.id}`} />
   }
 
   return (
@@ -51,7 +57,7 @@ const EditOrder = ({ user, match, alert, history }) => {
       order={order}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
-      cancelPath='/'
+      cancelPath='/orders'
     />
   )
 }

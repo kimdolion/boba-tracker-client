@@ -3,12 +3,13 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
+import messages from '../AutoDismissAlert/messages'
 
-const CreateOrder = ({ user }) => {
+const CreateOrder = ({ user, alert }) => {
   const orderObject = {
     title: '',
     flavor: '',
-    toppings: '[]',
+    toppings: '',
     datePurchased: '',
     location: '',
     cost: ''
@@ -32,8 +33,16 @@ const CreateOrder = ({ user }) => {
       },
       data: { order }
     })
+      .then(responseData => {
+        console.log(responseData)
+        return responseData
+      })
       .then(responseData => setCreated(responseData.data.order._id))
+      .then(() => {
+        alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
+      })
       .catch(console.error)
+      .catch(() => alert({ heading: 'Danger', message: messages.failure, variant: 'danger' }))
   }
 
   if (created) {
@@ -45,7 +54,7 @@ const CreateOrder = ({ user }) => {
       order={order}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
-      cancelPath='/'
+      cancelPath='/orders'
     />
   )
 }
