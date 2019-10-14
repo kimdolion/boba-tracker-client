@@ -6,7 +6,7 @@ export default {
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
-  createSuccess: 'Successfully created an order!',
+  createSuccess: 'You created an order!',
   updateSuccess: 'You updated your order!',
   deleteSuccess: 'You deleted an order!',
   failure: 'Something went wrong! Please try again.'
