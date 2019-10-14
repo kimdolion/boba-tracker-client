@@ -3,6 +3,7 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
+import messages from '../AutoDismissAlert/messages'
 
 const styles = {
   order: {
@@ -38,7 +39,15 @@ const Order = ({ user, alerts, match }) => {
       }
     })
       .then(() => setDeleted(true))
+      .then(() => {
+        alert({ heading: 'Success!', message: messages.deleteSuccess, variant: 'success' })
+      })
       .catch(console.error)
+      .catch(() => alert({
+        heading: 'Danger',
+        message: messages.failure,
+        variant: 'danger'
+      }))
   }
 
   if (!order) {
@@ -46,17 +55,16 @@ const Order = ({ user, alerts, match }) => {
   }
 
   if (deleted) {
-    return <Redirect to={
-      { pathname: '/', state: { message: 'Order succesfully deleted!' } }
-    } />
+    return <Redirect to={ { pathname: '/orders' } } />
   }
   return (
     <div style={ styles.order }>
-      <h4 key={order.title}>Title: {order.title}</h4>
-      <h5 key={order.flavor}>Flavor: {order.flavor}</h5>
-      <li key={order.datePurchased}>Date Purchased: {order.datePurchased}</li>
-      <li key={order.location}>Location: {order.location}</li>
-      <li key={order.cost}>Cost: {order.cost}</li>
+      <h4>Title: {order.title}</h4>
+      <h5>Flavor: {order.flavor}</h5>
+      <li>Date Purchased: {order.datePurchased}</li>
+      <li>Toppings: {order.toppings}</li>
+      <li>Location: {order.location}</li>
+      <li>Cost: {order.cost}</li>
       <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
       <Button onClick={destroy} href={'#/orders/'} className='btn btn-danger m-2'>Delete</Button>
       <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
