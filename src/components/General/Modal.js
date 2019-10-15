@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Button, ButtonToolbar } from 'react-bootstrap'
 
-function MyVerticallyCenteredModal (props) {
+const MyModal = (props) => {
   return (
     <Modal
       {...props}
@@ -28,16 +28,16 @@ function MyVerticallyCenteredModal (props) {
     </Modal>
   )
 }
-function MyModal () {
+const ModalButton = () => {
   const [modalShow, setModalShow] = React.useState(false)
 
   return (
     <ButtonToolbar>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
+      <Button variant="info" onClick={() => setModalShow(true)}>
+        Launch modal
       </Button>
 
-      <MyVerticallyCenteredModal
+      <MyModal
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -45,4 +45,4 @@ function MyModal () {
   )
 }
 
-export default MyModal
+export default ModalButton
