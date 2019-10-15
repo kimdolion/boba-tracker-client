@@ -81,12 +81,14 @@ const Order = ({ user, alert, match }) => {
   }
   const ownerButtons = (
     <div>
-      <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
+      <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
       <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
       <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
     </div>
   )
-
+  const allButton = (
+    <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
+  )
   return (
     <div style={ styles.order }>
       <h4>Flavor: {order.flavor}</h4>
@@ -94,7 +96,7 @@ const Order = ({ user, alert, match }) => {
       <li>Toppings: {order.toppings}</li>
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
-      { user && user._id === order.owner._id ? ownerButtons : <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link> }
+      { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )
 }
