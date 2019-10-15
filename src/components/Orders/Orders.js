@@ -3,14 +3,23 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
+import CreateOrder from './CreateOrder'
 
 const styles = {
-  orders: {
+  header: {
+    justifyContent: 'center',
+    textAlign: 'center'
+  },
+  ordersEach: {
     background: 'white',
     border: '2px solid black',
     borderRadius: '5px',
-    margin: '10px 5px',
+    textAlign: 'center',
+    margin: '20px 15px',
     padding: '10px 15px'
+  },
+  orders: {
+    justifyContent: 'center'
   }
 }
 
@@ -33,15 +42,22 @@ const Orders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.map(order => (
-    <Col sm='6' md='3' lg='2' xl='1' key={order._id} style={styles.orders}>
-      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} Location: {order.location}</Link>
+    <Col sm='6' md='4' lg='3' key={order._id} style={styles.ordersEach}>
+      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} <br /> Location: {order.location}</Link>
     </Col>
   ))
 
   return (
     <React.Fragment>
-      <h1>Orders</h1>
-      <Row>{ordersJsx}</Row>
+      <Row style={ styles.header }>
+        <Col>
+          <h1>Orders</h1>
+        </Col>
+        <Col>
+          <CreateOrder />
+        </Col>
+      </Row>
+      <Row style={ styles.orders }>{ordersJsx}</Row>
     </React.Fragment>
   )
 }
