@@ -5,4 +5,5 @@ $dark-tea: #c49c73;
 body {
   background: linear-gradient(to bottom, $light-tea 20%, $dark-tea 70%) no-repeat;
   background-attachment: fixed;
+  margin-bottom: 2rem;
 }
