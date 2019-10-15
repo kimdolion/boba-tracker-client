@@ -21,7 +21,7 @@ const Home = ({ user }) => (
     <h1>Welcome to Boba Tracker!</h1>
     <p>Track your bubble tea orders so you can easily remember what you&apos;ve enjoyed in the past.
     </p>
-    <p>You can also see what other people have ordered and try their boba order for yourself. If you do make sure to like that order by tapping the heart next to it!
+    <p>You can also see what other people have ordered and try their boba order for yourself.
     </p>
     { user ? authenticatedOptions : unauthenticatedOptions }
   </React.Fragment>
