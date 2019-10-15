@@ -24,6 +24,10 @@ const Orders = ({ user, alert }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
+      .then(responseData => {
+        console.log(responseData)
+        return responseData
+      })
       .then(responseData => setOrders(responseData.data.orders))
       .catch(console.error)
   }, [])

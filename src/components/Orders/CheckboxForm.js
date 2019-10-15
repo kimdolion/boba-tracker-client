@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 
-const Checkbox = ({ user, alerts, match }) => {
+const Checkbox = ({ user, order, handleChange, match }) => {
   const [topping, setTopping] = useState({
     toppings: {
       'tapioca boba': false,
@@ -25,10 +25,22 @@ const Checkbox = ({ user, alerts, match }) => {
         onClick={this.deselectAll}>Deselect All
       </button>
       <Form.Control
-        type="text"
-        name="location"
+        type="checkbox"
+        name="toppings"
         onChange={handleChange}
-        value={order.location}
+        value={order.topping[0]}
+      />
+      <Form.Control
+        type="checkbox"
+        name="toppings"
+        onChange={handleChange}
+        value={order.topping[1]}
+      />
+      <Form.Control
+        type="checkbox"
+        name="toppings"
+        onChange={handleChange}
+        value={order.topping[2]}
       />
     </Form.Group>
   )
