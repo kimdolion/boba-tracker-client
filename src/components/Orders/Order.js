@@ -18,11 +18,11 @@ const styles = {
 const Order = ({ user, alert, match }) => {
   const orderObject = {
     flavor: '',
-    toppings: '',
+    toppings: [],
     datePurchased: '',
     location: '',
     cost: '',
-    owner: ''
+    owner: {}
   }
   const [order, setOrder] = useState(orderObject)
   const [deleted, setDeleted] = useState(false)
@@ -35,6 +35,10 @@ const Order = ({ user, alert, match }) => {
         'Authorization': `Bearer ${user.token}`
       }
     })
+      .then(responseData => {
+        console.log(responseData)
+        return responseData
+      })
       .then(responseData => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
@@ -77,9 +81,9 @@ const Order = ({ user, alert, match }) => {
   }
   const ownerButtons = (
     <div>
+      <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
       <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
       <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
-      <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
     </div>
   )
 
