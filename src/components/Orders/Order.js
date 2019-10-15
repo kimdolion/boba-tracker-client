@@ -57,11 +57,7 @@ const Order = ({ user, alert, match }) => {
         alert({ heading: 'Success!', message: messages.deleteSuccess, variant: 'success' })
       })
       .catch(console.error)
-      .catch(() => alert({
-        heading: 'Danger',
-        message: messages.failure,
-        variant: 'danger'
-      }))
+      .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
 
   if (!order) {
@@ -71,6 +67,14 @@ const Order = ({ user, alert, match }) => {
   if (deleted) {
     return <Redirect to={ { pathname: '/orders' } } />
   }
+  const ownerButtons = (
+    <div>
+      <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
+      <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
+      <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
+    </div>
+  )
+
   return (
     <div style={ styles.order }>
       <h4>Title: {order.title}</h4>
@@ -79,9 +83,7 @@ const Order = ({ user, alert, match }) => {
       <li>Toppings: {order.toppings}</li>
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
-      <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
-      <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
-      <Link to="/orders" className='btn btn-dark m-2'>Back to all the Orders</Link>
+      { user && user._id === order.owner._id ? ownerButtons : <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link> }
     </div>
   )
 }
