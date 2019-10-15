@@ -5,16 +5,17 @@ import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 import messages from '../AutoDismissAlert/messages'
 
-const EditOrder = ({ user, match, alert, history }) => {
-  const [order, setOrder] = useState({
-    title: '',
+const EditOrder = ({ user, match, alert }) => {
+  const orderObject = {
     flavor: '',
     toppings: '',
     datePurchased: '',
     location: '',
-    cost: ''
-  })
+    cost: '',
+    owner: ''
+  }
   const [updated, setUpdated] = useState(false)
+  const [order, setOrder] = useState(orderObject)
   useEffect(() => {
     axios({
       method: 'GET',
@@ -27,9 +28,9 @@ const EditOrder = ({ user, match, alert, history }) => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
           const options = {
+            year: 'numeric',
             month: 'long',
-            day: 'numeric',
-            year: 'numeric'
+            day: 'numeric'
           }
           const dateObj = new Date(responseData.data.order.datePurchased)
           const offsetDate = new Date(dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset()))
@@ -57,7 +58,7 @@ const EditOrder = ({ user, match, alert, history }) => {
     })
       .then(() => setUpdated(true))
       .then(() => alert({ heading: 'Success', message: messages.updateSuccess, variant: 'success' }))
-      .catch(() => alert({ heading: 'Danger', message: messages.failure, variant: 'danger' }))
+      .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
       .catch(console.error)
   }
   if (updated) {

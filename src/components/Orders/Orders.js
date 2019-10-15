@@ -6,8 +6,11 @@ import { Row, Col } from 'react-bootstrap'
 
 const styles = {
   orders: {
-    backgroundColor: 'transparent',
-    margin: '2rem'
+    background: 'white',
+    border: '2px solid black',
+    borderRadius: '5px',
+    margin: '10px 5px',
+    padding: '10px 15px'
   }
 }
 
@@ -27,7 +30,7 @@ const Orders = ({ user, alert }) => {
 
   const ordersJsx = orders.map(order => (
     <Col sm='6' md='3' lg='2' xl='1' key={order._id} style={styles.orders}>
-      <Link to={`/orders/${order._id}`}>Title: {order.title} Location: {order.location}</Link>
+      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} Location: {order.location}</Link>
     </Col>
   ))
 

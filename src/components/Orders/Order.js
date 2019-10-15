@@ -16,7 +16,15 @@ const styles = {
 }
 
 const Order = ({ user, alert, match }) => {
-  const [order, setOrder] = useState(null)
+  const orderObject = {
+    flavor: '',
+    toppings: '',
+    datePurchased: '',
+    location: '',
+    cost: '',
+    owner: ''
+  }
+  const [order, setOrder] = useState(orderObject)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
@@ -77,8 +85,7 @@ const Order = ({ user, alert, match }) => {
 
   return (
     <div style={ styles.order }>
-      <h4>Title: {order.title}</h4>
-      <h5>Flavor: {order.flavor}</h5>
+      <h4>Flavor: {order.flavor}</h4>
       <li>Date Purchased: {order.datePurchased}</li>
       <li>Toppings: {order.toppings}</li>
       <li>Location: {order.location}</li>

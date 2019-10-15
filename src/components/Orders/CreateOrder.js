@@ -7,12 +7,12 @@ import messages from '../AutoDismissAlert/messages'
 
 const CreateOrder = ({ user, alert }) => {
   const orderObject = {
-    title: '',
     flavor: '',
     toppings: '',
     datePurchased: '',
     location: '',
-    cost: ''
+    cost: '',
+    owner: ''
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)
@@ -42,7 +42,7 @@ const CreateOrder = ({ user, alert }) => {
         alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
       })
       .catch(console.error)
-      .catch(() => alert({ heading: 'Danger', message: messages.failure, variant: 'danger' }))
+      .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
 
   if (created) {
