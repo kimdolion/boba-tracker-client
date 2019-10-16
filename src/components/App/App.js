@@ -70,6 +70,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/orders' render={() => (
             <Orders alert={this.alert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/my-orders' render={() => (
+            <Orders alert={this.alert} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/orders/:id' render={() => (
             <Order alert={this.alert} user={user} />
           )} />

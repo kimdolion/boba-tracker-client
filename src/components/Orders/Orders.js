@@ -5,6 +5,9 @@ import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
 import ModalContainer from '../General/Modal'
 import BubbleTeaSvg from './BubbleTea'
+import { renderToStaticMarkup } from 'react-dom/server'
+
+const svgString = encodeURIComponent(renderToStaticMarkup(<BubbleTeaSvg />))
 
 const styles = {
   header: {
@@ -12,15 +15,23 @@ const styles = {
     textAlign: 'center'
   },
   ordersEach: {
-    background: `${BubbleTeaSvg}`,
-    border: '2px solid black',
-    borderRadius: '5px',
-    textAlign: 'center',
-    margin: '10px 5px',
-    padding: '10px 15px'
+    backgroundImage: `url("data:image/svg+xml,${svgString}")`,
+    backgroundRepeat: 'noRepeat',
+    backgroundSize: 'contain',
+    display: 'flex',
+    alignItems: 'center',
+    height: '20rem',
+    justifyContent: 'center',
+    margin: '15px',
+    padding: '0',
+    textAlign: 'center'
+  },
+  link: {
+    color: 'black'
   },
   orders: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: '2px'
   }
 }
 
@@ -43,8 +54,8 @@ const Orders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.map(order => (
-    <Col sm='6' md='3' key={order._id} style={styles.ordersEach}>
-      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} <br /> Location: {order.location} <br /> Cost: {order.cost}</Link>
+    <Col sm='6' md='3' key={order._id} style={ styles.ordersEach }>
+      <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
     </Col>
   ))
 
