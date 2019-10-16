@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 import messages from '../AutoDismissAlert/messages'
 
-const EditOrder = ({ user, match, alert }) => {
+const EditOrder = ({ user, match, alert, handleCancel }) => {
   const orderObject = {
     flavor: '',
-    toppings: [],
-    datePurchased: '',
+    datePurchased: '2009-09-09',
     location: '',
-    cost: '',
-    owner: {}
+    cost: 0
   }
-  const [updated, setUpdated] = useState(false)
   const [order, setOrder] = useState(orderObject)
   useEffect(() => {
     axios({
@@ -27,15 +24,10 @@ const EditOrder = ({ user, match, alert }) => {
       .then(responseData => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
-          const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          }
           const dateObj = new Date(responseData.data.order.datePurchased)
-          const offsetDate = new Date(dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset()))
-          formattedDate = offsetDate.toLocaleDateString(undefined, options)
+          formattedDate = dateObj.toISOString().substring(0, 10)
         }
+        console.log(formattedDate)
         setOrder({ ...responseData.data.order, datePurchased: formattedDate
         })
       })
@@ -56,13 +48,20 @@ const EditOrder = ({ user, match, alert }) => {
       },
       data: { order }
     })
-      .then(() => setUpdated(true))
+      .then(responseData => {
+        let formattedDate = ''
+        if (responseData.data.order.datePurchased) {
+          const dateObj = new Date(responseData.data.order.datePurchased)
+          formattedDate = dateObj.toISOString().substring(0, 10)
+        }
+        console.log(formattedDate)
+        setOrder({ ...responseData.data.order, datePurchased: formattedDate
+        })
+      })
+      .then(handleCancel)
       .then(() => alert({ heading: 'Success', message: messages.updateSuccess, variant: 'success' }))
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
       .catch(console.error)
-  }
-  if (updated) {
-    return <Redirect to={`/orders/${match.params.id}`} />
   }
 
   return (
@@ -70,7 +69,7 @@ const EditOrder = ({ user, match, alert }) => {
       order={order}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
-      cancelPath='/orders'
+      handleCancel={handleCancel}
     />
   )
 }

@@ -8,7 +8,7 @@ import ModalContainer from '../General/Modal'
 
 const styles = {
   order: {
-    background: 'darkgray',
+    background: 'white',
     border: '2px solid black',
     borderRadius: '5px',
     margin: '10px 5px',
@@ -20,7 +20,7 @@ const Order = ({ user, alert, match }) => {
   const orderObject = {
     flavor: '',
     toppings: [],
-    datePurchased: '',
+    datePurchased: '2009-09-09',
     location: '',
     cost: '',
     owner: {}
@@ -72,7 +72,6 @@ const Order = ({ user, alert, match }) => {
       .catch(console.error)
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
-  // <ModalContainer modalType="edit" alert={alert} user={user} />
   if (!order) {
     return <p>...Loading</p>
   }

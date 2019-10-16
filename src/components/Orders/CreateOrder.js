@@ -5,11 +5,11 @@ import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 import messages from '../AutoDismissAlert/messages'
 
-const CreateOrder = ({ user, alert }) => {
+const CreateOrder = ({ user, alert, handleCancel }) => {
   const orderObject = {
     flavor: '',
     toppings: [],
-    datePurchased: '',
+    datePurchased: Date.now(),
     location: '',
     cost: '',
     owner: {}
@@ -54,7 +54,7 @@ const CreateOrder = ({ user, alert }) => {
       order={order}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
-      cancelPath='/orders'
+      handleCancel={handleCancel}
     />
   )
 }

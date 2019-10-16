@@ -21,7 +21,6 @@ const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
         <Form.Control
           type="date"
           name="datePurchased"
-          placeholder="YYYY-MM-DD"
           value={order.datePurchased}
           onChange={handleChange}
         />
@@ -41,7 +40,7 @@ const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
         <Form.Control
           type="number"
           name="cost"
-          placeholder="$1"
+          placeholder="1"
           value={order.cost}
           onChange={handleChange}
         />

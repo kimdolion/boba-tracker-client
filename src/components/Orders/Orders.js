@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
 import ModalContainer from '../General/Modal'
+import BubbleTeaSvg from './BubbleTea'
 
 const styles = {
   header: {
@@ -11,7 +12,7 @@ const styles = {
     textAlign: 'center'
   },
   ordersEach: {
-    background: 'white',
+    background: `${BubbleTeaSvg}`,
     border: '2px solid black',
     borderRadius: '5px',
     textAlign: 'center',

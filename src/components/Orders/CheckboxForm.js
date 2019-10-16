@@ -54,6 +54,13 @@ const Checkbox = ({ order, handleChange }) => (
       onChange={handleChange}
       value={order.toppings[4]}
     />
+    <Form.Check
+      type="checkbox"
+      inline label="Aloe"
+      checked={order.toppings[5]}
+      onChange={handleChange}
+      value={order.toppings[5]}
+    />
   </Form.Group>
 )
 export default Checkbox

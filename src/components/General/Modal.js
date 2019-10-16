@@ -12,7 +12,7 @@ const ModalContainer = (props) => {
   return (
     <React.Fragment>
       <Button variant="info" onClick={handleShow}>
-        { props.modalType === 'create' ? <p>Create an Order</p> : <p>Edit an Order</p> }
+        { props.modalType === 'create' ? <span>Create an Order</span> : <span>Edit an Order</span> }
       </Button>
 
       <Modal centered show={show} onHide={handleClose}>
