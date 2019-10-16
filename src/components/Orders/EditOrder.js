@@ -5,14 +5,17 @@ import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 import messages from '../AutoDismissAlert/messages'
 
-const EditOrder = ({ user, match, alert, handleCancel }) => {
+const EditOrder = ({ user, match, alert, handleCancel, history }) => {
   const orderObject = {
     flavor: '',
-    datePurchased: '2009-09-09',
+    toppings: [],
+    datePurchased: '',
     location: '',
     cost: 0
   }
   const [order, setOrder] = useState(orderObject)
+  // const [created, setCreated] = useState(false)
+
   useEffect(() => {
     axios({
       method: 'GET',
@@ -27,13 +30,11 @@ const EditOrder = ({ user, match, alert, handleCancel }) => {
           const dateObj = new Date(responseData.data.order.datePurchased)
           formattedDate = dateObj.toISOString().substring(0, 10)
         }
-        console.log(formattedDate)
         setOrder({ ...responseData.data.order, datePurchased: formattedDate
         })
       })
       .catch(console.error)
   }, [])
-
   const handleChange = event => {
     event.persist()
     setOrder(order => ({ ...order, [event.target.name]: event.target.value }))
@@ -48,15 +49,9 @@ const EditOrder = ({ user, match, alert, handleCancel }) => {
       },
       data: { order }
     })
-      .then(responseData => {
-        let formattedDate = ''
-        if (responseData.data.order.datePurchased) {
-          const dateObj = new Date(responseData.data.order.datePurchased)
-          formattedDate = dateObj.toISOString().substring(0, 10)
-        }
-        console.log(formattedDate)
-        setOrder({ ...responseData.data.order, datePurchased: formattedDate
-        })
+      .then(() => {
+        history.replace('/reload')
+        history.replace(`/orders/${match.params.id}`)
       })
       .then(handleCancel)
       .then(() => alert({ heading: 'Success', message: messages.updateSuccess, variant: 'success' }))

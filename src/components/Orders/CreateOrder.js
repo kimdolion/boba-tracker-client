@@ -9,10 +9,9 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
   const orderObject = {
     flavor: '',
     toppings: [],
-    datePurchased: Date.now(),
+    datePurchased: '',
     location: '',
-    cost: '',
-    owner: {}
+    cost: 0
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)

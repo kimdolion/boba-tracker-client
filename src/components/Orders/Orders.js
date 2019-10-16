@@ -16,7 +16,7 @@ const styles = {
     border: '2px solid black',
     borderRadius: '5px',
     textAlign: 'center',
-    margin: '20px 15px',
+    margin: '10px 5px',
     padding: '10px 15px'
   },
   orders: {
@@ -43,8 +43,8 @@ const Orders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.map(order => (
-    <Col sm='6' md='4' lg='3' key={order._id} style={styles.ordersEach}>
-      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} <br /> Location: {order.location}</Link>
+    <Col sm='6' md='3' key={order._id} style={styles.ordersEach}>
+      <Link to={`/orders/${order._id}`}>Flavor: {order.flavor} <br /> Location: {order.location} <br /> Cost: {order.cost}</Link>
     </Col>
   ))
 

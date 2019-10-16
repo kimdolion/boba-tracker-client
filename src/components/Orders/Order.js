@@ -20,9 +20,9 @@ const Order = ({ user, alert, match }) => {
   const orderObject = {
     flavor: '',
     toppings: [],
-    datePurchased: '2009-09-09',
+    datePurchased: '',
     location: '',
-    cost: '',
+    cost: 0,
     owner: {}
   }
   const [order, setOrder] = useState(orderObject)
@@ -93,7 +93,6 @@ const Order = ({ user, alert, match }) => {
     <div style={ styles.order }>
       <h4>Flavor: {order.flavor}</h4>
       <li>Date Purchased: {order.datePurchased}</li>
-      <li>Toppings: {order.toppings}</li>
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
