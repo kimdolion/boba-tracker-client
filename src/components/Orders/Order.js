@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
 import messages from '../AutoDismissAlert/messages'
+import ModalContainer from '../General/Modal'
 
 const styles = {
   order: {
@@ -71,7 +72,7 @@ const Order = ({ user, alert, match }) => {
       .catch(console.error)
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
-
+  // <ModalContainer modalType="edit" alert={alert} user={user} />
   if (!order) {
     return <p>...Loading</p>
   }
@@ -82,7 +83,7 @@ const Order = ({ user, alert, match }) => {
   const ownerButtons = (
     <div>
       <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
-      <Button href={`#/orders/${match.params.id}/edit-order`} className='btn btn-warning m-2'>Edit</Button>
+      <ModalContainer modalType="edit" alert={alert} user={user} />
       <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
     </div>
   )

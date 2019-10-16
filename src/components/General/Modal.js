@@ -1,48 +1,32 @@
-import React from 'react'
-import { Modal, Button, ButtonToolbar } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Modal, Button } from 'react-bootstrap'
+import CreateOrder from '../Orders/CreateOrder'
+import EditOrder from '../Orders/EditOrder'
 
-const MyModal = (props) => {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  )
-}
-const ModalButton = () => {
-  const [modalShow, setModalShow] = React.useState(false)
+const ModalContainer = (props) => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
-    <ButtonToolbar>
-      <Button variant="info" onClick={() => setModalShow(true)}>
-        Launch modal
+    <React.Fragment>
+      <Button variant="info" onClick={handleShow}>
+        { props.modalType === 'create' ? <p>Create an Order</p> : <p>Edit an Order</p> }
       </Button>
 
-      <MyModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </ButtonToolbar>
+      <Modal centered show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{ props.modalType === 'create' ? <h3>Create an Order</h3> : <h3>Edit an Order</h3> }</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          { props.modalType === 'create'
+            ? <CreateOrder {...props} handleCancel={handleClose} />
+            : <EditOrder {...props} handleCancel={handleClose} />
+          }
+        </Modal.Body>
+      </Modal>
+    </React.Fragment>
   )
 }
-
-export default ModalButton
+export default ModalContainer

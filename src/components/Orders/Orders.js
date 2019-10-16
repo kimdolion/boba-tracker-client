@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
-import ModalButton from '../General/Modal'
+import ModalContainer from '../General/Modal'
 
 const styles = {
   header: {
@@ -54,7 +54,7 @@ const Orders = ({ user, alert }) => {
           <h1>Orders</h1>
         </Col>
         <Col>
-          <ModalButton />
+          <ModalContainer modalType="create" alert={alert} user={user} />
         </Col>
       </Row>
       <Row style={ styles.orders }>{ordersJsx}</Row>

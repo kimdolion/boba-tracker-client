@@ -2,9 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const OrderForm = ({ order, handleChange, handleSubmit }) => {
-  const cancelPath = order._id ? `#/orders/${order._id}` : '#orders'
-
+const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="flavor">
@@ -49,7 +47,7 @@ const OrderForm = ({ order, handleChange, handleSubmit }) => {
         />
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
-      <Button variant="dark" href={cancelPath} className="ml-2" type="button">Cancel</Button>
+      <Button variant="dark" onClick={handleCancel} className="ml-2" type="button">Cancel</Button>
     </Form>
   )
 }
