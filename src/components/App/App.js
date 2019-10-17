@@ -10,6 +10,7 @@ import SignIn from '../Auth/SignIn'
 import SignOut from '../Auth/SignOut'
 import ChangePassword from '../Auth/ChangePassword'
 import Orders from '../Orders/Orders'
+import OwnerOrders from '../Orders/OwnerOrders'
 import Order from '../Orders/Order'
 import CreateOrder from '../Orders/CreateOrder'
 import EditOrder from '../Orders/EditOrder'
@@ -71,7 +72,7 @@ class App extends Component {
             <Orders alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/my-orders' render={() => (
-            <Orders alert={this.alert} user={user} />
+            <OwnerOrders alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/orders/:id' render={() => (
             <Order alert={this.alert} user={user} />
