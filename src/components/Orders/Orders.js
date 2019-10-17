@@ -49,7 +49,7 @@ const Orders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.map(order => (
-    <Col xs='12' sm='6' md='4' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
+    <Col xs='12' lg='3' key={order._id} style={ styles.ordersEach }>
       <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
     </Col>
   ))

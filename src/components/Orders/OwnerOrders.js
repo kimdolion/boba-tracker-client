@@ -50,7 +50,7 @@ const OwnerOrders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.filter(function (order) { return order.owner._id === user._id }).map(order => (
-    <Col xs='12' sm='6' md='4' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
+    <Col xs='12' md='3' key={order._id} style={ styles.ordersEach }>
       <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
     </Col>
   ))
