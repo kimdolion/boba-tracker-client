@@ -73,7 +73,6 @@ const Order = ({ user, alert, match }) => {
       .then(() => {
         alert({ heading: 'Success!', message: messages.deleteSuccess, variant: 'success' })
       })
-      .catch(console.error)
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
   if (!order) {

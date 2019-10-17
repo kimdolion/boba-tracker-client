@@ -36,7 +36,6 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
       .then(() => {
         alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
       })
-      .catch(console.error)
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }
 
