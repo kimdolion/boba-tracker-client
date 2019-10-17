@@ -14,7 +14,7 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
     color: '#c49c73'
   }
   const [order, setOrder] = useState(orderObject)
-  // const [created, setCreated] = useState(false)
+  // const [setEdited] = useState(false)
 
   useEffect(() => {
     axios({
@@ -33,8 +33,8 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
         setOrder({ ...responseData.data.order, datePurchased: formattedDate
         })
       })
-      .catch(console.error)
   }, [])
+
   const handleChange = event => {
     event.persist()
     setOrder(order => ({ ...order, [event.target.name]: event.target.value }))
