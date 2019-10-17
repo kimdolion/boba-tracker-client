@@ -14,7 +14,6 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
     color: '#c49c73'
   }
   const [order, setOrder] = useState(orderObject)
-  // const [setEdited] = useState(false)
 
   useEffect(() => {
     axios({
@@ -49,14 +48,13 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
       },
       data: { order }
     })
+      .then(handleCancel)
       .then(() => {
         history.replace('/reload')
         history.replace(`/orders/${match.params.id}`)
       })
-      .then(handleCancel)
       .then(() => alert({ heading: 'Success', message: messages.updateSuccess, variant: 'success' }))
       .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
-      .catch(console.error)
   }
 
   return (

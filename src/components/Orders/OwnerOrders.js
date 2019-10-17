@@ -5,9 +5,6 @@ import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
 import ModalContainer from '../General/Modal'
 import BubbleTeaSvg from './BubbleTea'
-import { renderToStaticMarkup } from 'react-dom/server'
-
-const svgString = encodeURIComponent(renderToStaticMarkup(<BubbleTeaSvg />))
 
 const styles = {
   header: {
@@ -15,10 +12,6 @@ const styles = {
     textAlign: 'center'
   },
   ordersEach: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url("data:image/svg+xml,${svgString}")`,
-    backgroundRepeat: 'noRepeat',
-    backgroundSize: 'cover',
     display: 'flex',
     alignItems: 'center',
     height: '20rem',
@@ -28,7 +21,9 @@ const styles = {
     textAlign: 'center'
   },
   link: {
-    color: 'black'
+    color: 'black',
+    display: 'inline-block',
+    width: '70%'
   },
   orders: {
     justifyContent: 'center',
@@ -51,6 +46,7 @@ const OwnerOrders = ({ user, alert }) => {
 
   const ordersJsx = orders.filter(function (order) { return order.owner._id === user._id }).map(order => (
     <Col xs='12' md='3' key={order._id} style={ styles.ordersEach }>
+      <BubbleTeaSvg color={order.color} />
       <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
     </Col>
   ))
