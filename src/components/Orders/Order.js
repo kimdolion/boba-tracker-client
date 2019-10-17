@@ -30,7 +30,7 @@ const Order = ({ user, alert, match }) => {
     datePurchased: '',
     location: '',
     cost: 0,
-    color: '',
+    color: '#c49c73',
     owner: {}
   }
   const [order, setOrder] = useState(orderObject)
