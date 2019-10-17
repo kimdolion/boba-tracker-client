@@ -15,8 +15,6 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
     color: ''
   }
   const [order, setOrder] = useState(orderObject)
-  // const [created, setCreated] = useState(false)
-
   useEffect(() => {
     axios({
       method: 'GET',

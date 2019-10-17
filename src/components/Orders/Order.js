@@ -11,8 +11,16 @@ const styles = {
     background: 'white',
     border: '2px solid black',
     borderRadius: '5px',
+    listStyleType: 'none',
     margin: '10px 5px',
     padding: '10px 15px'
+  },
+  colorBox: {
+    border: '0',
+    borderRadius: '100%',
+    height: '4vh',
+    padding: '0',
+    width: '40vw'
   }
 }
 
@@ -23,7 +31,7 @@ const Order = ({ user, alert, match }) => {
     datePurchased: '',
     location: '',
     cost: 0,
-    color: '#c49c73',
+    color: '',
     owner: {}
   }
   const [order, setOrder] = useState(orderObject)
@@ -96,7 +104,7 @@ const Order = ({ user, alert, match }) => {
       <li>Date Purchased: {order.datePurchased}</li>
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
-      <li>Color: <input type="color" value={order.color} disabled /></li>
+      <li>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )
