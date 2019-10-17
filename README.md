@@ -16,6 +16,13 @@ Keep track of your bubble tea purchases so you can remember what you liked and s
 ## Technologies Used
 React, React Boostrap, Axios, MongoDB, Express, HTML, CSS, JS
 
+## Setup and Installation
+##### Setup and intialize to local/remote and Git Pages
+Install dependencies and work with locally with Grunt
+- Use `npm` to install dependencies
+  - Installed additional dependency React-color to test color pickers
+- Use `npm run deploy` to deploy to Git Pages
+  
 **User** has many **Orders**
 
   <table style="display:inline">
