@@ -16,7 +16,7 @@ const styles = {
     alignItems: 'center',
     height: '20rem',
     justifyContent: 'center',
-    margin: '15px',
+    margin: '10px',
     padding: '0',
     textAlign: 'center'
   },

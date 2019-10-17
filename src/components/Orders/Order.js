@@ -83,21 +83,21 @@ const Order = ({ user, alert, match }) => {
   }
   const ownerButtons = (
     <div>
-      <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
-      <Link to="/my-orders" className='btn btn-secondary m-2'>Back to My Orders</Link>
+      <Link to="/orders" className='btn btn-dark m-2' aria-current>Back to All Orders</Link>
+      <Link to="/my-orders" className='btn btn-secondary m-2' aria-current>Back to My Orders</Link>
       <ModalContainer modalType="edit" alert={alert} user={user} />
       <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
     </div>
   )
   const allButton = (
-    <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
+    <Link to="/orders" className='btn btn-dark m-2' aria-current>Back to All Orders</Link>
   )
   return (
     <div style={ styles.order }>
       <h4>Flavor: {order.flavor}</h4>
       <li>Date Purchased: {order.datePurchased}</li>
       <li>Location: {order.location}</li>
-      <li>Cost: {order.cost}</li>
+      <li>Cost: ${order.cost}</li>
       <li>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>

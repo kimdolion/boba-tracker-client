@@ -16,7 +16,7 @@ const styles = {
     alignItems: 'center',
     height: '20rem',
     justifyContent: 'center',
-    margin: '15px',
+    margin: '10px',
     padding: '0',
     textAlign: 'center'
   },
@@ -47,7 +47,7 @@ const Orders = ({ user, alert }) => {
   const ordersJsx = orders.map(order => (
     <Col xs='12' md='6' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
       <BubbleTeaSvg color={order.color} />
-      <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
+      <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: ${order.cost}</Link>
     </Col>
   ))
 
