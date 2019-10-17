@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import ColorPicker from '../General/ColorPicker'
 
 const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
   return (
@@ -42,6 +43,15 @@ const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
           name="cost"
           placeholder="1"
           value={order.cost}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="color">
+        <Form.Label>Color</Form.Label>
+        <Form.Control
+          type="color"
+          name="color"
+          value={order.color}
           onChange={handleChange}
         />
       </Form.Group>

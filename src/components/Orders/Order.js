@@ -23,6 +23,7 @@ const Order = ({ user, alert, match }) => {
     datePurchased: '',
     location: '',
     cost: 0,
+    color: '#c49c73',
     owner: {}
   }
   const [order, setOrder] = useState(orderObject)
@@ -95,6 +96,7 @@ const Order = ({ user, alert, match }) => {
       <li>Date Purchased: {order.datePurchased}</li>
       <li>Location: {order.location}</li>
       <li>Cost: {order.cost}</li>
+      <li>Color: <input type="color" value={order.color} disabled /></li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )

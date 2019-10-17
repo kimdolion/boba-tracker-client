@@ -11,7 +11,8 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
     toppings: [],
     datePurchased: '',
     location: '',
-    cost: 0
+    cost: 0,
+    color: '#c49c73'
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)

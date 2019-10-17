@@ -11,7 +11,8 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
     toppings: [],
     datePurchased: '',
     location: '',
-    cost: 0
+    cost: 0,
+    color: ''
   }
   const [order, setOrder] = useState(orderObject)
   // const [created, setCreated] = useState(false)
