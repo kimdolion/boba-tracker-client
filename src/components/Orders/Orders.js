@@ -16,8 +16,7 @@ const styles = {
   },
   ordersEach: {
     backgroundImage: `url("data:image/svg+xml,${svgString}")`,
-    backgroundRepeat: 'noRepeat',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     display: 'flex',
     alignItems: 'center',
     height: '20rem',
