@@ -27,7 +27,6 @@ const styles = {
 const Order = ({ user, alert, match }) => {
   const orderObject = {
     flavor: '',
-    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,
@@ -86,11 +85,12 @@ const Order = ({ user, alert, match }) => {
   }
 
   if (deleted) {
-    return <Redirect to={ { pathname: '/orders' } } />
+    return <Redirect to={ { pathname: '/my-orders' } } />
   }
   const ownerButtons = (
     <div>
       <Link to="/orders" className='btn btn-dark m-2'>Back to All Orders</Link>
+      <Link to="/my-orders" className='btn btn-secondary m-2'>Back to My Orders</Link>
       <ModalContainer modalType="edit" alert={alert} user={user} />
       <Button onClick={destroy} className='btn btn-danger m-2'>Delete</Button>
     </div>

@@ -8,7 +8,6 @@ import messages from '../AutoDismissAlert/messages'
 const EditOrder = ({ user, match, alert, handleCancel, history }) => {
   const orderObject = {
     flavor: '',
-    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,

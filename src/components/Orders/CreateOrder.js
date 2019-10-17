@@ -8,11 +8,10 @@ import messages from '../AutoDismissAlert/messages'
 const CreateOrder = ({ user, alert, handleCancel }) => {
   const orderObject = {
     flavor: '',
-    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,
-    color: '#c49c73'
+    color: ''
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)
