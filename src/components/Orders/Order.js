@@ -59,7 +59,6 @@ const Order = ({ user, alert, match }) => {
         setOrder({ ...responseData.data.order, datePurchased: formattedDate
         })
       })
-      .catch(console.error)
   }, [])
   const destroy = () => {
     axios({

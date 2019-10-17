@@ -46,7 +46,6 @@ const Orders = ({ user, alert }) => {
       }
     })
       .then(responseData => setOrders(responseData.data.orders))
-      .catch(console.error)
   }, [])
 
   const ordersJsx = orders.map(order => (

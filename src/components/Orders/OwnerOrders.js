@@ -47,7 +47,6 @@ const OwnerOrders = ({ user, alert }) => {
       }
     })
       .then(responseData => setOrders(responseData.data.orders))
-      .catch(console.error)
   }, [])
 
   const ordersJsx = orders.filter(function (order) { return order.owner._id === user._id }).map(order => (
