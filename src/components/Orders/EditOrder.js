@@ -11,9 +11,11 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
     datePurchased: '',
     location: '',
     cost: 0,
-    color: ''
+    color: '#c49c73'
   }
   const [order, setOrder] = useState(orderObject)
+  // const [created, setCreated] = useState(false)
+
   useEffect(() => {
     axios({
       method: 'GET',

@@ -45,10 +45,6 @@ const Order = ({ user, alert, match }) => {
       }
     })
       .then(responseData => {
-        console.log(responseData)
-        return responseData
-      })
-      .then(responseData => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
           const options = {

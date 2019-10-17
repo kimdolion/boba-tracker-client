@@ -11,7 +11,7 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
     datePurchased: '',
     location: '',
     cost: 0,
-    color: ''
+    color: '#c49c73'
   }
   const [created, setCreated] = useState(false)
   const [order, setOrder] = useState(orderObject)
@@ -32,10 +32,6 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
       },
       data: { order }
     })
-      .then(responseData => {
-        console.log(responseData)
-        return responseData
-      })
       .then(responseData => setCreated(responseData.data.order._id))
       .then(() => {
         alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
