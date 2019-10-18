@@ -45,9 +45,9 @@ const OwnerOrders = ({ user, alert }) => {
   }, [])
 
   const ordersJsx = orders.filter(function (order) { return order.owner._id === user._id }).map(order => (
-    <Col xs='12' md='3' key={order._id} style={ styles.ordersEach }>
+    <Col xs='12' md='6' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
       <BubbleTeaSvg color={order.color} />
-      <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: {order.cost}</Link>
+      <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: ${order.cost}</Link>
     </Col>
   ))
 
