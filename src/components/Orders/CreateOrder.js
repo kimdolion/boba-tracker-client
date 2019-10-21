@@ -4,10 +4,12 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import OrderForm from './OrderForm'
 import messages from '../AutoDismissAlert/messages'
+// import { toppingOptions } from './ToppingOptions'
 
 const CreateOrder = ({ user, alert, handleCancel }) => {
   const orderObject = {
     flavor: '',
+    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,
@@ -19,6 +21,10 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
   const handleChange = event => {
     event.persist()
     setOrder(order => ({ ...order, [event.target.name]: event.target.value }))
+  }
+
+  const handleSelect = selectedArray => {
+    setOrder({ ...order, toppings: selectedArray })
   }
 
   const handleSubmit = event => {
@@ -46,6 +52,7 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
   return (
     <OrderForm
       order={order}
+      handleSelect={handleSelect}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       handleCancel={handleCancel}

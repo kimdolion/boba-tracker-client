@@ -1,9 +1,11 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import ColorPicker from '../General/ColorPicker'
+// import Toppings from './Toppings'
+import CreatableSelect from 'react-select/creatable'
+import { toppingOptions } from './ToppingOptions'
 
-const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
+const OrderForm = ({ order, handleSelect, handleChange, handleSubmit, handleCancel }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="flavor">
@@ -15,6 +17,17 @@ const OrderForm = ({ order, handleChange, handleSubmit, handleCancel }) => {
           value={order.flavor}
           onChange={handleChange}
           required
+        />
+      </Form.Group>
+      <Form.Group controlId="toppings">
+        <Form.Label>Toppings</Form.Label>
+        <CreatableSelect
+          isMulti
+          name="toppings"
+          placeholder="Toppings"
+          value={order.toppings}
+          onChange={handleSelect}
+          options={toppingOptions}
         />
       </Form.Group>
       <Form.Group controlId="datePurchased">

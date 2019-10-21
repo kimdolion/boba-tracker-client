@@ -8,6 +8,7 @@ import messages from '../AutoDismissAlert/messages'
 const EditOrder = ({ user, match, alert, handleCancel, history }) => {
   const orderObject = {
     flavor: '',
+    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,
@@ -24,6 +25,10 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
       }
     })
       .then(responseData => {
+        console.log(responseData.data.order.toppings)
+        return responseData
+      })
+      .then(responseData => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
           const dateObj = new Date(responseData.data.order.datePurchased)
@@ -32,11 +37,15 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
         setOrder({ ...responseData.data.order, datePurchased: formattedDate
         })
       })
+      .catch(() => alert({ heading: 'Failure', message: messages.failure, variant: 'danger' }))
   }, [])
 
   const handleChange = event => {
     event.persist()
     setOrder(order => ({ ...order, [event.target.name]: event.target.value }))
+  }
+  const handleSelect = selectedArray => {
+    setOrder({ ...order, toppings: selectedArray })
   }
   const handleSubmit = event => {
     event.preventDefault()
@@ -60,6 +69,7 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
   return (
     <OrderForm
       order={order}
+      handleSelect={handleSelect}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       handleCancel={handleCancel}

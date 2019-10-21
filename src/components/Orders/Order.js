@@ -3,6 +3,7 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
+import { Row, Col } from 'react-bootstrap'
 import messages from '../AutoDismissAlert/messages'
 import ModalContainer from '../General/Modal'
 
@@ -15,18 +16,25 @@ const styles = {
     margin: '10px 5px',
     padding: '10px 15px'
   },
+  color: {
+    display: 'inlineblock'
+  },
   colorBox: {
     border: '0',
     borderRadius: '100%',
     height: '4vh',
     padding: '0',
-    width: '40vw'
+    width: '100%'
+  },
+  list: {
+    marginLeft: '-2rem'
   }
 }
 
 const Order = ({ user, alert, match }) => {
   const orderObject = {
     flavor: '',
+    toppings: [],
     datePurchased: '',
     location: '',
     cost: 0,
@@ -92,13 +100,26 @@ const Order = ({ user, alert, match }) => {
   const allButton = (
     <Link to="/orders" className='btn btn-dark m-2' aria-current>Back to All Orders</Link>
   )
+
+  const toppingsJsx = order.toppings.map(topping => (
+    <li key={order.toppings.value}>{topping.value}</li>
+  ))
+
   return (
     <div style={ styles.order }>
       <h4>Flavor: {order.flavor}</h4>
-      <li>Date Purchased: {order.datePurchased}</li>
-      <li>Location: {order.location}</li>
-      <li>Cost: ${order.cost}</li>
-      <li>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
+      <Row>
+        <Col>
+          Toppings:
+          <ul> {toppingsJsx}</ul>
+        </Col>
+        <Col>
+          <li>Date Purchased: {order.datePurchased}</li>
+          <li>Location: {order.location}</li>
+          <li>Cost: ${order.cost}</li>
+        </Col>
+      </Row>
+      <li style={ styles.color }>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )
