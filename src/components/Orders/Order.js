@@ -103,7 +103,7 @@ const Order = ({ user, alert, match }) => {
   )
 
   const toppingsJsx = order.toppings.map(topping => (
-    <li key={order.toppings.value}>{topping.value}</li>
+    <li key={topping.value}>{topping.value}</li>
   ))
 
   return (
