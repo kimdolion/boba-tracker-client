@@ -17,14 +17,15 @@ const styles = {
     padding: '10px 15px'
   },
   color: {
-    display: 'inlineblock'
+    display: 'inline-flex'
   },
   colorBox: {
     border: '0',
     borderRadius: '100%',
-    height: '4vh',
+    height: '5vh',
+    marginLeft: '5px',
     padding: '0',
-    width: '100%'
+    width: '75vw'
   },
   list: {
     marginLeft: '-2rem'
@@ -111,7 +112,7 @@ const Order = ({ user, alert, match }) => {
       <Row>
         <Col>
           Toppings:
-          <ul> {toppingsJsx}</ul>
+          <ul>{toppingsJsx}</ul>
         </Col>
         <Col>
           <li>Date Purchased: {order.datePurchased}</li>
@@ -119,7 +120,7 @@ const Order = ({ user, alert, match }) => {
           <li>Cost: ${order.cost}</li>
         </Col>
       </Row>
-      <li style={ styles.color }>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
+      <li style={ styles.color }>Color:   <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )
