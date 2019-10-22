@@ -25,7 +25,7 @@ const styles = {
     height: '5vh',
     marginLeft: '5px',
     padding: '0',
-    width: '75vw'
+    width: '70vw'
   },
   list: {
     marginLeft: '-2rem'
