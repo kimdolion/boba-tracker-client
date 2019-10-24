@@ -25,7 +25,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="dark" variant="dark" className="sticky-top" expand="md">
+  <Navbar bg="dark" variant="dark" collapseOnSelect className="sticky-top" expand="md">
     <Navbar.Brand href="#home">
       Boba Tracker
     </Navbar.Brand>
