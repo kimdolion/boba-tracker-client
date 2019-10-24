@@ -25,7 +25,7 @@ const styles = {
     height: '5vh',
     marginLeft: '5px',
     padding: '0',
-    width: '70vw'
+    width: '60vw'
   },
   list: {
     marginLeft: '-2rem'
@@ -120,7 +120,9 @@ const Order = ({ user, alert, match }) => {
           <li>Cost: ${order.cost}</li>
         </Col>
       </Row>
-      <li style={ styles.color }>Color:   <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
+      <div style={ styles.color }>
+        <li>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
+      </div>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
   )
