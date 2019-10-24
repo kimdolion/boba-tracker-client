@@ -20,12 +20,12 @@ const styles = {
     display: 'inline-flex'
   },
   colorBox: {
-    border: '0',
-    borderRadius: '100%',
-    height: '5vh',
+    border: 'none',
+    minHeight: '2rem',
     marginLeft: '5px',
+    maxWidth: '75vw',
     padding: '0',
-    width: '60vw'
+    width: '50rem'
   },
   list: {
     marginLeft: '-2rem'
@@ -110,18 +110,18 @@ const Order = ({ user, alert, match }) => {
     <div style={ styles.order }>
       <h4>Flavor: {order.flavor}</h4>
       <Row>
-        <Col>
+        <Col s='12' md='6'>
           Toppings:
           <ul>{toppingsJsx}</ul>
         </Col>
-        <Col>
+        <Col s='12' md='6'>
           <li>Date Purchased: {order.datePurchased}</li>
           <li>Location: {order.location}</li>
           <li>Cost: ${order.cost}</li>
         </Col>
       </Row>
       <div style={ styles.color }>
-        <li>Color: <input type="color" value={order.color} style={ styles.colorBox } disabled /></li>
+        <li>Color: <input type="color" style={ styles.colorBox } value={order.color} disabled /></li>
       </div>
       { user && user._id === order.owner._id ? ownerButtons : allButton }
     </div>
