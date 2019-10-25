@@ -25,10 +25,6 @@ const EditOrder = ({ user, match, alert, handleCancel, history }) => {
       }
     })
       .then(responseData => {
-        console.log(responseData.data.order.toppings)
-        return responseData
-      })
-      .then(responseData => {
         let formattedDate = ''
         if (responseData.data.order.datePurchased) {
           const dateObj = new Date(responseData.data.order.datePurchased)
