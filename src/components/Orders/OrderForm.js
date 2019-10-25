@@ -54,6 +54,7 @@ const OrderForm = ({ order, handleSelect, handleChange, handleSubmit, handleCanc
         <Form.Control
           type="number"
           name="cost"
+          max="99"
           placeholder="1"
           value={order.cost}
           onChange={handleChange}
