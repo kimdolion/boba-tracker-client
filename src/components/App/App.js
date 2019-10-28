@@ -43,7 +43,7 @@ class App extends Component {
     const { alerts, user } = this.state
     return (
       <Fragment>
-        <Header user={user} />
+        <Header user={user} alert={this.alert}/>
         {alerts.map((alert, index) => (
           <AutoDismissAlert
             key={index}
