@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <p>Check out the bubble tea collection so far by clicking on Orders.
+    <p>Check out the bubble tea collection so far by clicking on <Link to="/orders" className='btn btn-sm btn-dark m-2' aria-current>All Orders</Link> or your own collection <Link to="/my-orders" className='btn btn-sm btn-secondary m-2' aria-current>My Orders</Link>
     </p>
-    <p>...Or get your collection going by clicking on Create Order.
+    <p>...Or get your collection going to either of those links, then click on Create Order.
     </p>
   </React.Fragment>
 )
