@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+// import ModalContainer from './Modal'
 
 const authenticatedOptions = (
   <Fragment>
@@ -24,11 +25,9 @@ const alwaysOptions = (
   </Fragment>
 )
 
-const Header = ({ user }) => (
+const Header = ({ user, alert }) => (
   <Navbar bg="dark" variant="dark" collapseOnSelect className="sticky-top" expand="md">
-    <Navbar.Brand href="#home">
-      Boba Tracker
-    </Navbar.Brand>
+    <Navbar.Brand href="#home">Boba Tracker</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
