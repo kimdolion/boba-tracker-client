@@ -2,6 +2,7 @@ import React from 'react'
 
 const styles = {
   bottom: 0,
+  height: '50%',
   left: 0,
   marginTop: '50vh',
   position: 'absolute',
@@ -10,7 +11,7 @@ const styles = {
 }
 
 const BubblesMany = () =>
-  <svg xmlns="http://www.w3.org/2000/svg" width="50%" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" style={styles}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 100 630" preserveAspectRatio="xMidYMid meet" style={styles}>
     <defs id="svgEditorDefs"><polygon id="svgEditorShapeDefs" style={{ fill: 'rosybrown', stroke: 'black', vectorEffect: 'non-scaling-stroke', strokeWidth: '1px' }}/>
       <radialGradient gradientUnits="objectBoundingBox" id="rgrd3-c" x1="0" x2="100%" y1="0" y2="100%">
         <stop offset="0%" stopColor="#000000"/>

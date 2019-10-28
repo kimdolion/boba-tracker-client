@@ -10,7 +10,7 @@ const styles = {
   top: 0
 }
 
-const BubblesSvg = () =>
+const BubblesFew = () =>
   <svg style={ styles } xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0  1000 630" preserveAspectRatio="xMidYMid meet" className="shake-slow shake-constant shake-constant--hover">
     <defs id="svgEditorDefs">
       <polygon id="svgEditorShapeDefs"
@@ -65,4 +65,4 @@ const BubblesSvg = () =>
       transform="matrix(9.625 0 0 9.625 192.5 135.5)"/>
   </svg>
 
-export default BubblesSvg
+export default BubblesFew
