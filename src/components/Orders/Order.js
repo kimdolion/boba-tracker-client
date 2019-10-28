@@ -88,7 +88,7 @@ const Order = ({ user, alert, match }) => {
   }
 
   if (deleted) {
-    return <Redirect to={ { pathname: '/my-orders' } } />
+    return <Redirect to='/my-orders' />
   }
   const ownerButtons = (
     <div>
