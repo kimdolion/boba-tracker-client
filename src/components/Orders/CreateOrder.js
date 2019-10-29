@@ -39,6 +39,11 @@ const CreateOrder = ({ user, alert, handleCancel }) => {
       data: { order }
     })
       .then(responseData => setCreated(responseData.data.order._id))
+      // .then(handleCancel)
+      // .then(() => {
+      //   history.replace('/reload')
+      //   history.replace(`/orders/${created}`)
+      // })
       .then(() => {
         alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
       })
