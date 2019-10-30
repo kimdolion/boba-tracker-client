@@ -4,6 +4,7 @@ const styles = {
   bottom: 0,
   left: 0,
   marginBlockStart: '80%',
+  paddingRight: '6px',
   position: 'absolute',
   right: 0,
   top: 0,
