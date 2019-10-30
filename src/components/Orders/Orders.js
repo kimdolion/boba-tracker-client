@@ -5,9 +5,15 @@ import apiUrl from '../../apiConfig'
 import { Row, Col } from 'react-bootstrap'
 import ModalContainer from '../General/Modal'
 import BubbleTeaSvg from './BubbleTea'
-import BubblesFew from './BubblesFew'
+// import BubblesFew from './BubblesFew'
+import BubblesMany from './BubblesMany'
 
 const styles = {
+  bubbles: {
+    display: 'inline-block',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   header: {
     justifyContent: 'center',
     textAlign: 'center'
@@ -49,8 +55,8 @@ const Orders = ({ user, alert }) => {
   const ordersJsx = orders.map(order => (
     <Col xs='12' md='6' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
       <BubbleTeaSvg color={order.color} />
-      {order.toppings.length ? <BubblesFew /> : null}
       <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: ${order.cost}</Link>
+      {order.toppings.length ? <BubblesMany style={styles.bubbles} /> : null}
     </Col>
   ))
 
