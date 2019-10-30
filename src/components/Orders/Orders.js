@@ -9,11 +9,6 @@ import BubbleTeaSvg from './BubbleTea'
 import BubblesMany from './BubblesMany'
 
 const styles = {
-  bubbles: {
-    display: 'inline-block',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   header: {
     justifyContent: 'center',
     textAlign: 'center'
@@ -21,9 +16,9 @@ const styles = {
   ordersEach: {
     display: 'flex',
     alignItems: 'center',
-    height: '20rem',
+    height: '15rem',
     justifyContent: 'center',
-    margin: '10px',
+    margin: '4rem 1rem',
     padding: '0',
     textAlign: 'center'
   },
@@ -56,7 +51,7 @@ const Orders = ({ user, alert }) => {
     <Col xs='12' md='6' lg='3' xl='2' key={order._id} style={ styles.ordersEach }>
       <BubbleTeaSvg color={order.color} />
       <Link to={`/orders/${order._id}`} style={ styles.link }>Flavor: {order.flavor} <br /> Cost: ${order.cost}</Link>
-      {order.toppings.length ? <BubblesMany style={styles.bubbles} /> : null}
+      {order.toppings.length ? <BubblesMany /> : null}
     </Col>
   ))
 
