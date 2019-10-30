@@ -1,7 +1,16 @@
 import React from 'react'
 
+const styles = {
+  bottom: 0,
+  left: 0,
+  marginTop: '11vh',
+  position: 'absolute',
+  right: 0,
+  top: 0,
+  zIndex: '2'
+}
 const BubbleSingle = () =>
-  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1000 630" preserveAspectRatio="xMidYMid meet" >
+  <svg style={styles} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 1000 630" preserveAspectRatio="xMidYMid meet" >
     <defs id="svgEditorDefs">
       <polygon id="svgEditorShapeDefs"
         style="fill:rosybrown;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;"/>
