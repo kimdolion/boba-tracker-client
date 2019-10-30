@@ -3,7 +3,7 @@ import React from 'react'
 const styles = {
   bottom: 0,
   left: 0,
-  marginTop: '10rem',
+  marginBlockStart: '80%',
   position: 'absolute',
   right: 0,
   top: 0,
