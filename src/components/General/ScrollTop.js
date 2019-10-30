@@ -15,7 +15,8 @@ const styles = {
 class GoTop extends Component {
     state = {
       intervalId: 0,
-      thePosition: false
+      thePosition: false,
+      _isMounted: false
     }
     componentDidMount () {
       document.addEventListener('scroll', () => {
@@ -45,6 +46,11 @@ class GoTop extends Component {
           </div>
         )
       }
+    }
+    componentWillUnmount () {
+      this._isMounted = false
+      this.thePosition = false
+      this.intervalId = 0
     }
     render () {
       return (

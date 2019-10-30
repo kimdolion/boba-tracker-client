@@ -14,6 +14,7 @@ import OwnerOrders from '../Orders/OwnerOrders'
 import Order from '../Orders/Order'
 import CreateOrder from '../Orders/CreateOrder'
 import EditOrder from '../Orders/EditOrder'
+import GoTop from '../General/ScrollTop'
 
 const styles = {
   main: {
@@ -86,6 +87,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/orders/:id/edit-order' render={() => (
             <EditOrder alert={this.alert} user={user} />
           )} />
+          <GoTop scrollStepInPx="50" delayInMs="20" />
         </main>
         <Footer user={user} />
       </Fragment>

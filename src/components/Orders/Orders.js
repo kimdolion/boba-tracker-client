@@ -33,6 +33,7 @@ const styles = {
 
 const Orders = ({ user, alert }) => {
   const [orders, setOrders] = useState([])
+
   useEffect(() => {
     axios({
       method: 'GET',

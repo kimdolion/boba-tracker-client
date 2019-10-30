@@ -61,7 +61,9 @@ const OwnerOrders = ({ user, alert }) => {
           <ModalContainer modalType="create" alert={alert} user={user} />
         </Col>
       </Row>
-      <Row style={ styles.orders }>{ordersJsx}</Row>
+      <Row style={ styles.orders }>
+        {ordersJsx}
+      </Row>
     </React.Fragment>
   )
 }
