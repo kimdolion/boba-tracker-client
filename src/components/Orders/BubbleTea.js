@@ -1,10 +1,10 @@
 import React from 'react'
 
 const styles = {
-  position: 'absolute',
   bottom: 0,
   left: 0,
   marginBottom: '10vh',
+  position: 'absolute',
   right: 0,
   top: 0,
   zIndex: -1
