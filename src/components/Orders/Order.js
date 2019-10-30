@@ -99,7 +99,9 @@ const Order = ({ user, alert, match }) => {
     </div>
   )
   const allButton = (
-    <Link to="/orders" className='btn btn-dark m-2' aria-current>Back to All Orders</Link>
+    <div>
+      <Link to="/orders" className='btn btn-dark m-2' aria-current>Back to All Orders</Link>
+    </div>
   )
 
   const toppingsJsx = order.toppings.map(topping => (
