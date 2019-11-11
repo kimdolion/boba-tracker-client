@@ -11,7 +11,7 @@ Keep track of your bubble tea purchases so you can remember what you liked and s
 
 [Back-end Client](https://limitless-everglades-63033.herokuapp.com/)
 
-[Black-end Repo](https://github.com/kimdolion/boba-tracker-backend)
+[Back-end Repo](https://github.com/kimdolion/boba-tracker-backend)
 
 ## Technologies Used
 React, React Boostrap, Axios, MongoDB, Express, HTML, CSS, JS
@@ -22,7 +22,7 @@ Install dependencies and work with locally with Grunt
 - Use `npm` to install dependencies
   - Installed additional dependency React-color to test color pickers
 - Use `npm run deploy` to deploy to Git Pages
-  
+
 **User** has many **Orders**
 
   <table style="display:inline">
